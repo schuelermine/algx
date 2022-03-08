@@ -1,15 +1,12 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE NoImplicitPrelude #-}
 
-module Foo where
+module Data.Algebra where
 
+import Data.Kind.Extensible
 import Data.Kind
 import GHC.TypeLits
-
-class IsExtensibleKind xk
-class IsExtensibleKind xk => IsKind xk k
 
 data OperationFamily
 data SimpleOperationArity
