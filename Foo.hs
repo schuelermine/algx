@@ -3,21 +3,21 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Main where
+module Foo where
 
 import Data.Kind
 import GHC.TypeLits
+
+class IsExtensibleKind xk
+class IsExtensibleKind xk => IsKind xk k
 
 data OperationFamily
 data SimpleOperationArity
 data AlgebraOperationSourceArity
 data AlgebraOperationTargetArity
 
-class IsExtensibleKind xk
-
 instance IsExtensibleKind OperationFamily
 instance IsExtensibleKind SimpleOperationArity
 instance IsExtensibleKind AlgebraOperationSourceArity
 instance IsExtensibleKind AlgebraOperationTargetArity
 
-class IsExtensibleKind xk => IsKind xk k
