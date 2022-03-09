@@ -9,25 +9,29 @@ import Data.Kind
 import GHC.TypeLits
 
 data OperationFamily
-instance IsExtensibleKind OperationFamily
+
+class IsOperationFamily f
 
 data Multiplicative
 data Additive
 data Generic
 data Action
 
-instance IsKind OperationFamily Multiplicative
-instance IsKind OperationFamily Additive
-instance IsKind OperationFamily Generic
-instance IsKind OperationFamily Action
+instance IsOperationFamily Multiplicative
+instance IsOperationFamily Additive
+instance IsOperationFamily Generic
+instance IsOperationFamily Action
 
 data OperationDefinitionKind
-instance IsExtensibleKind OperationDefinitionKind
+class IsOperationDefinitionKind f where
+    type OpDefArguments f
+    type MkOpDef f :: OpDefArguments f -> f
 
 data ArityToValue
 data ArityToArity
 data ExplicitType
-instance IsKind OperationDefinitionKind ArityToValue
-instance IsKind OperationDefinitionKind ArityToArity
-instance IsKind OperationDefinitionKind ExplicitType
+
+instance IsOperationDefinitionKind ArityToValue
+instance IsOperationDefinitionKind ArityToArity
+instance IsOperationDefinitionKind ExplicitType
 
